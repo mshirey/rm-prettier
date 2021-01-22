@@ -1,6 +1,6 @@
 # rm-prettier
 ### Description:
-This is tiny bash script to remove prettier packages and configuration options from a newly created NestJS project.  It attempts to cleanly remove the configuration options from the `.eslintrc.js` file.  
+This is tiny bash script to remove prettier packages and configuration options from a newly created [NestJS](https://nestjs.com/) project.  It attempts to cleanly remove the configuration options from the `.eslintrc.js` file.  
 
 The current script is dependent on the format of this file at the time of writting.  If the folks at NestJS add/alter extends array, this script will need to be modified to match.
 
