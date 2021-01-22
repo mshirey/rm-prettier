@@ -1,0 +1,29 @@
+#!/bin/bash
+## Usage: rm-prettier
+##
+## Description: 
+##
+## Removes prettier related packages and configuration settings from a new NestJS 
+## project.  Also adds an optional tab based indent rule that can be removed if 
+## not desired.
+##
+## Must be run in the root of the NestJS project.
+
+# uninstall prettier packages
+npm uninstall eslint-plugin-prettier eslint-config-prettier prettier --save-dev
+
+# delete prettier config file
+rm .prettierrc  # delete the config file for prettier
+
+# remove prettier related lines from .eslintrc.js
+sed -i "/'prettier\/@typescript-eslint',/d" .eslintrc.js # remove line
+sed -i "/'plugin:prettier\/recommended',/d" .eslintrc.js # remove line
+
+# (optional) remove traling comma - 
+#   this might cause a problem if nestjs changes the template to include more elements in this 
+#   array, if so comment/remove/alter this line.
+sed -i "/'plugin:@typescript-eslint\/recommended',/s/.$//" .eslintrc.js  
+
+# (optional) add a tab indent rule - 
+#   the following line adds an indent rule for using tabs, delete/comment out if not needed
+sed -i "/rules: {/a \\    'indent': [2, \"tab\"],\\" .eslintrc.js
